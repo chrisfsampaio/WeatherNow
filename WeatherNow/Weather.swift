@@ -12,15 +12,15 @@ import Alamofire
 struct Weather {
     let cityName: String
     let temperature: Double
-    let date: NSDate
+    let date: Date
     let iconName: String
     
-    static let formatter = NSDateFormatter()
+    static let formatter = DateFormatter()
     
     var dayName: String {
         Weather.formatter.dateFormat = "EEEE"
         
-        return Weather.formatter.stringFromDate(self.date)
+        return Weather.formatter.string(from: self.date)
     }
     
 }
@@ -55,14 +55,14 @@ extension Weather {
     
     init?(cityName: String?, timeInterval: Double?, temperature: Double?, iconCode: String?) {
         guard let name = cityName,
-            dateInterval = timeInterval,
-            temperatureValue = temperature,
-            iconCodeName = iconCode else {
+            let dateInterval = timeInterval,
+            let temperatureValue = temperature,
+            let iconCodeName = iconCode else {
                 return nil
         }
         
         self.cityName = name
-        self.date = NSDate(timeIntervalSince1970: dateInterval)
+        self.date = Date(timeIntervalSince1970: dateInterval)
         self.temperature = temperatureValue
         self.iconName = Weather.iconName(iconCodeName)
     }
@@ -70,70 +70,67 @@ extension Weather {
 
 extension Weather {
     
-    static func parseForecast(forecastJSON: [String: AnyObject]) -> [Weather] {
+    static func parseForecast(_ forecastJSON: [String: AnyObject]) -> [Weather] {
         
-        guard let name = forecastJSON["city"]?["name"] as? String,
-            list = forecastJSON["list"] as? [[String: AnyObject]] else {
+        guard let name = forecastJSON["city"]?["name"] as? String, let list = forecastJSON["list"] as? [[String: AnyObject]] else {
                 return []
         }
         
-        let calendar = NSCalendar.currentCalendar()
+        let calendar = Calendar.current
         
         let temperatures = list.flatMap { Weather(cityName: name, json: $0) }
         
         let filteredTemperatures = temperatures.filter { element in
-            let components = calendar.components(.Hour, fromDate: element.date)
-            return components.hour == 12
+            let components = calendar.dateComponents([.hour], from: element.date)
+            //FIXME: components.hour returns values not considering timesaving, now starts at 1hour, so it's using components.hour == 13 here.
+            return components.hour == 13
         }
-        
         return filteredTemperatures
     }
 }
 
 extension Weather {
     
-    static func fetchCurrentWeather(cityName: String, completion: Weather -> Void) {
+    static func fetchCurrentWeather(_ cityName: String, completion: @escaping (Weather) -> Void) {
         
-        let parameters = ["q" : cityName, "units" : "metric"]
+        let parameters = ["q" : cityName, "units" : "metric", "APPID" : "c1a08f415bc60f69b9b814bd85477654"]
         let endpoint = "http://api.openweathermap.org/data/2.5/weather"
         
-        
-        Alamofire.request(Method.GET, endpoint, parameters: parameters).responseJSON() { _, _, result in
+        Alamofire.request(endpoint, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
             
-            switch result {
-            case .Success(let value):
+            switch response.result {
+            case .success(let value):
                 if let weather = Weather(json: (value as! [String: AnyObject])) {
                     completion(weather)
                 }
                 
-            case .Failure(_, _):
-                print("Erro!")
+            case .failure(let error):
+                dump(error)
             }
-
+            
         }
-        
     }
     
-    static func fetchForecast(cityName: String, completion: [Weather] -> Void) {
+    static func fetchForecast(_ cityName: String, completion: @escaping ([Weather]) -> Void) {
         
-        let parameters = ["q" : cityName, "units" : "metric"]
+        let parameters = ["q" : cityName, "units" : "metric", "APPID" : "c1a08f415bc60f69b9b814bd85477654"]
         let endpoint = "http://api.openweathermap.org/data/2.5/forecast"
         
-        Alamofire.request(Method.GET, endpoint, parameters: parameters).responseJSON() { _, _, result in
+        Alamofire.request(endpoint, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
             
-            switch result {
-            case .Success(let value):
+            switch response.result {
+            case .success(let value):
                 let temperatures = Weather.parseForecast(value as! [String: AnyObject])
                 completion(temperatures)
                 
-            case .Failure(_, _):
-                print("Erro!")
+            case .failure(let error):
+                print("\(error)")
             }
             
         }
     }
     
-    static func iconName(code: String) -> String {
+    static func iconName(_ code: String) -> String {
         switch code {
         case "01d":
             return "clear-day"

@@ -13,7 +13,7 @@ class WeekCell: UITableViewCell {
     @IBOutlet weak var dayNameLabel: UILabel!
     @IBOutlet weak var forecastImageView: UIImageView!
     
-    func configureWithWeather(weather: Weather) {
+    func configureWithWeather(_ weather: Weather) {
         dayNameLabel.text = weather.dayName
         forecastImageView.image = UIImage(named: weather.iconName)
     }

@@ -26,14 +26,14 @@ class ViewController: UIViewController {
         
         Weather.fetchForecast("São Carlos") { weathers in
             weathers.forEach { element in
-                print(element.dayName)
-                print(element.temperature)
+//                print(element.dayName)
+//                print(element.temperature)
             }
         }
     }
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 
 
