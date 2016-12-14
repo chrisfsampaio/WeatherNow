@@ -18,8 +18,8 @@ class WeekTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.tintColor = .whiteColor()
-        self.refreshControl?.addTarget(self, action: "refreshData", forControlEvents: .ValueChanged)
+        self.refreshControl?.tintColor = .white
+        self.refreshControl?.addTarget(self, action: #selector(WeekTableViewController.refreshData), for: .valueChanged)
         
         Weather.fetchForecast("São Carlos") { weathers in
             self.weathers = weathers
@@ -37,20 +37,20 @@ class WeekTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.weathers?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("WeekCell") as! WeekCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WeekCell") as! WeekCell
         let weather = self.weathers![indexPath.row]
         cell.configureWithWeather(weather)
         
         return cell
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

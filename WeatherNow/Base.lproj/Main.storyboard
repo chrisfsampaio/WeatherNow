@@ -1,16 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Qno-Pc-3DO">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qno-Pc-3DO">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="HelveticaNeueLights.ttc">
-            <string>HelveticaNeue-UltraLight</string>
-            <string>HelveticaNeue-Thin</string>
+        <array key="HelveticaNeueLights.ttc">
             <string>HelveticaNeue-Light</string>
-        </mutableArray>
+            <string>HelveticaNeue-Thin</string>
+            <string>HelveticaNeue-UltraLight</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Hoje-->
@@ -28,20 +32,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="1yI-33-yl3">
                                 <rect key="frame" x="151" y="343" width="73" height="42"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="17º" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsi-7I-wlD">
-                                <rect key="frame" x="128" y="500" width="121" height="98"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17º" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsi-7I-wlD">
+                                <rect key="frame" x="127" y="450" width="121" height="98"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Santa Cruz das Palmeiras" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ue-OJ-qbN">
                                 <rect key="frame" x="36" y="90" width="303" height="59"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.11764705882352941" green="0.50196078431372548" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.50196078431372548" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1yI-33-yl3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0DI-a3-cxH"/>
                             <constraint firstItem="1yI-33-yl3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="30" id="3pV-gy-44e"/>
@@ -53,7 +57,6 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Hoje" image="today" id="ace-NQ-0cQ"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cityLabel" destination="5ue-OJ-qbN" id="5a1-7P-XAh"/>
                         <outlet property="imageView" destination="1yI-33-yl3" id="XE1-Bs-9zg"/>
@@ -72,7 +75,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="tSj-Jh-0Zf">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="kAB-Ac-Jyu"/>
@@ -86,35 +89,34 @@
         <!--Semana-->
         <scene sceneID="aYz-0k-yMo">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9cS-Mf-QtU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="NDW-kl-fLL" customClass="WeekTableViewController" customModule="WeatherNow" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="siR-AV-DIF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.11764705882352941" green="0.50196078431372548" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.50196078431372548" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeekCell" rowHeight="80" id="vJN-h8-6MU" customClass="WeekCell" customModule="WeatherNow" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vJN-h8-6MU" id="ZgF-SQ-njH">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Segunda-Feira" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vL6-Sx-r1t">
                                             <rect key="frame" x="8" y="28" width="127" height="24"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="VhO-d3-Axt">
-                                            <rect key="frame" x="532" y="10" width="60" height="60"/>
+                                            <rect key="frame" x="307" y="10" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="veQ-70-xLg"/>
                                                 <constraint firstAttribute="height" constant="60" id="w6s-5B-z2s"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.11764705882352941" green="0.50196078431372548" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.11764705882352941" green="0.50196078431372548" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="vL6-Sx-r1t" firstAttribute="centerY" secondItem="ZgF-SQ-njH" secondAttribute="centerYWithinMargins" id="1lQ-UX-58w"/>
                                         <constraint firstItem="vL6-Sx-r1t" firstAttribute="leading" secondItem="ZgF-SQ-njH" secondAttribute="leading" constant="8" id="4f5-du-xCK"/>
@@ -135,6 +137,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Semana" id="RgQ-nZ-I7I"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9cS-Mf-QtU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1279" y="1177"/>
         </scene>
